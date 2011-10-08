@@ -16,6 +16,6 @@ describe HomeController do
     response.should be_success
 
     post :collect_email, :email => "test@mail.com"
-    response.body.should == "This address has already been subscribed"
+    response.body.should == "this address has already been subscribed"
   end
 end

@@ -1,0 +1,67 @@
+<% content_for :head do %>
+<style>
+  #home-wrap { margin-top: 200px; padding: 0 200px; }
+  #form { margin-left: 95px; }
+  #email { width: 200px; }
+  .message {display: none; font-size: 10pt }
+  .success { color: green; }
+  .error { color: red; }
+</style>
+<% end %>
+
+<div id="home-wrap">
+  <h1 style="text-align: center;">COMING SOON!</h1>
+  <div id='form'>
+    <%= text_field_tag :email, "", :placeholder => "Contact me! email@gmail.com" %>
+    <%= button_tag "Save", :id => 'submit-form' %>
+    <div class="message"></div>
+  </div>
+</div>
+
+<% content_for :script do %>
+<script>
+  $('#submit-form').click(function() {
+    submitForm();
+  });
+
+  $('#email').keypress(function(e) {
+     if (e.keyCode == 13) {
+       submitForm();
+       $(this).blur();
+     }
+  });
+
+  function submitForm() {
+    var email = $('#email').val();
+    if (sm.isValidEmailAddress(email)) {
+      $.post('<%= collect_email_path %>', {
+          authenticity_token: '<%= form_authenticity_token %>',
+          email: email
+        }, function(resp) {
+          if (/[^\s]+/.test(resp)) {
+            $('.message').addClass('error').text(resp).fadeIn();
+          } else {
+            $('.message')
+              .removeClass('error')
+              .addClass('success')
+              .text('Email Saved!')
+              .fadeIn();
+            $('#email').val('');
+          }
+          hideMessage();
+        });
+    } else {
+      $('.message').addClass('error').text("Come on... try entering a real email address!").fadeIn();
+      hideMessage();
+    }
+  }
+
+  function hideMessage() {
+    setTimeout(function() {
+      $('.message').fadeOut(function() {
+        $(this).removeClass('success error').text('');
+      })
+    }, 3000);
+  }
+</script>
+<% end %>

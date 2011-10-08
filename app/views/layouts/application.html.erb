@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>September May Designs</title>
+  <%= yield :head %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="content-wrap">
+    <%= yield %>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <%= javascript_include_tag "common" %>
+  <%= yield :script %>
+</body>
+</html>

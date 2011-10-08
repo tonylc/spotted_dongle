@@ -7,6 +7,6 @@ class HomeController < ApplicationController
     InterestedEmail.create!(:email => params[:email])
     render :nothing => true
   rescue
-    render :text => "Email already taken!"
+    render :text => "This address has already been subscribed"
   end
 end

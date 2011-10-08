@@ -1,19 +1,20 @@
 <% content_for :head do %>
 <style>
   #home-wrap { margin-top: 200px; padding: 0 200px; }
+  #home-wrap h1 { text-align: center; margin-bottom: 0; }
   #form { margin-left: 95px; }
   #email { width: 200px; }
   .message {display: none; font-size: 10pt }
   .success { color: green; }
-  .error { color: red; }
+  .error {  }
 </style>
 <% end %>
 
 <div id="home-wrap">
-  <h1 style="text-align: center;">COMING SOON!</h1>
+  <h1>coming soon</h1>
   <div id='form'>
-    <%= text_field_tag :email, "", :placeholder => "Contact me! email@gmail.com" %>
-    <%= button_tag "Save", :id => 'submit-form' %>
+    <%= text_field_tag :email, "", :placeholder => "subscribe for email updates" %>
+    <%= button_tag "submit", :id => 'submit-form' %>
     <div class="message"></div>
   </div>
 </div>
@@ -40,6 +41,7 @@
         }, function(resp) {
           if (/[^\s]+/.test(resp)) {
             $('.message').addClass('error').text(resp).fadeIn();
+            hideMessage();
           } else {
             $('.message')
               .removeClass('error')
@@ -47,11 +49,11 @@
               .text('Email Saved!')
               .fadeIn();
             $('#email').val('');
+            hideMessage();
           }
-          hideMessage();
         });
     } else {
-      $('.message').addClass('error').text("Come on... try entering a real email address!").fadeIn();
+      $('.message').addClass('error').text("Please enter a valid email address").fadeIn();
       hideMessage();
     }
   }
@@ -61,7 +63,7 @@
       $('.message').fadeOut(function() {
         $(this).removeClass('success error').text('');
       })
-    }, 3000);
+    }, 5000);
   }
 </script>
 <% end %>

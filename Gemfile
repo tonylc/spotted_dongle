@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
-gem 'mysql', "2.8.1"
 #gem 'capistrano'
 gem 'pg', "0.11.0"
 

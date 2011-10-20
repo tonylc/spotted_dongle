@@ -1,1 +1,8 @@
-HI
+<div>
+<h1>Collected Emails</h1>
+<ul>
+  <% @emails.each do |email| %>
+    <li><%= email.email %>
+  <% end %>
+</ul>
+</div>

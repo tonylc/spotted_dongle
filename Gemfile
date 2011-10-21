@@ -26,4 +26,5 @@ group :test do
   gem 'rspec-rails', "2.6.1"
   gem 'mocha', "0.10.0"
   gem 'database_cleaner', "0.6.7"
+  gem 'jasmine'
 end

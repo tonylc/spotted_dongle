@@ -11,7 +11,7 @@
 #   - dist/**/*.js
 #
 src_files:
-  - common.js
+  - /*.js
 
 # stylesheets
 #
@@ -51,7 +51,7 @@ helpers:
 #   - **/*[sS]pec.js
 #
 spec_files:
-  - 'common_spec.js'
+  - /*_spec.js
 
 # src_dir
 #
@@ -73,4 +73,4 @@ src_dir: app/assets/javascripts
 #
 # spec_dir: spec/javascripts
 #
-spec_dir: spec/assets/javascripts
+spec_dir: spec/javascripts

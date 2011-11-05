@@ -3,6 +3,8 @@ SpottedDongle::Application.routes.draw do
     root :to => 'admin#index'
   end
 
-  match 'collect_email' => 'home#collect_email', :via => :post
+  match 'collect-email' => 'home#collect_email', :as => :collect_email, :via => :post
+
+  resources :wedding, :only => [:index]
   root :to => 'home#coming_soon'
 end

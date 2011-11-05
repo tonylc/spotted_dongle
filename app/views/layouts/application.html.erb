@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>September May Designs</title>
+  <title><%= @page_title || "September May Wedding Designs" %></title>
+  <meta name="description" content="<%= @page_description || "September May Wedding Designs"%>">
   <%= yield :head %>
   <%= csrf_meta_tags %>
 </head>
